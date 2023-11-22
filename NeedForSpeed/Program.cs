@@ -1,5 +1,4 @@
-﻿
-using NeedForSpeed.Visions;
+﻿using NeedForSpeed.Visions;
 
 class Program
 {
