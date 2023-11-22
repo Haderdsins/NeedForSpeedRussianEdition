@@ -8,15 +8,15 @@ public partial class Menu
     private static void DisplayAvailableVehicles(IReadOnlyList<Vehicle> vehicles)
     {
         Console.Clear();
-        Console.WriteLine("------------------------");
-        Console.WriteLine("Доступные ТС для заезда:");
+        Console.WriteLine("————————————————————————");
+        Console.WriteLine("Выбирай тачки для заезда:");
         for (var i = 0; i < vehicles.Count; i++)
         {
             Console.WriteLine($"{i}. {vehicles[i].Name}");
         }
 
-        Console.WriteLine("Для начала гонки введите: поехали");
-        Console.WriteLine("------------------------");
+        Console.WriteLine("Для начала гонки введи: ready");
+        Console.WriteLine("————————————————————————");
     }
 
     private static List<EarthVehicle> InitGroundVehicles()

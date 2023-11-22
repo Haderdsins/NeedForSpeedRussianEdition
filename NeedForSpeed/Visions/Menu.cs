@@ -49,16 +49,19 @@ public static partial class Menu
             {
                 DisplayAvailableVehicles(freeVehicles);
 
-                Console.WriteLine("Введите номер ТС, чтобы добавить его в заезд:");
+                Console.WriteLine("Введи номер тачки, чтобы пригласить его в гонку:");
                 var input = Console.ReadLine();
-                if (input?.ToLower() is "поехали")
+                if (input?.ToLower() is "ready")
                 {
+
                     if (vehicles.Count is not 0)
                     {
                         return vehicles;
                     }
-
-                    Console.WriteLine("В гонке не зарегистрировано ни одно ТС!");
+                    Console.Clear();
+                    Console.WriteLine("Ты че, серезно? Гонка без тачек это не гонка, это анекдот!");
+                    TextPrinter.TypewriterLine("В Африке, если человек на 80% состоит из воды, то считается, что он из благополучной семьи.");
+                    Thread.Sleep(2000);
                     isInputValid = false;
                     continue;
                 }

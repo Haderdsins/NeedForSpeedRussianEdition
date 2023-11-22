@@ -32,11 +32,11 @@ public static partial  class Menu
         do
         {
             Console.Clear();
-            Console.WriteLine("Введите дистанцию гонки:");
+            Console.WriteLine("Сколько метров будем ехать:");
             isParseDistanceValid = int.TryParse(Console.ReadLine(), out distance);
             if (!isParseDistanceValid)
             {
-                Console.WriteLine("Неверно указана дистанция!");
+                Console.WriteLine("Эээ гонщик остынь ты столько не проедешь!");
             }
         } while (!isParseDistanceValid);
 
