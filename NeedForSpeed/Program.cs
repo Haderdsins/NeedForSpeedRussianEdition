@@ -7,5 +7,6 @@ class Program
         Loading.Start();
         Logo.PrintLogo();
         Menu.Start();
+        //AnimationNFS.Animation();
     }
 }

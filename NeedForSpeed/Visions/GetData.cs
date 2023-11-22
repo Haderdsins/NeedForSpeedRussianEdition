@@ -7,6 +7,7 @@ public partial class Menu
 {
     private static void DisplayAvailableVehicles(IReadOnlyList<Vehicle> vehicles)
     {
+        Console.Clear();
         Console.WriteLine("------------------------");
         Console.WriteLine("Доступные ТС для заезда:");
         for (var i = 0; i < vehicles.Count; i++)

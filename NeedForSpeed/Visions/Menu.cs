@@ -8,8 +8,17 @@ public static partial class Menu
 {
     public static void Start()
     {
+        
+        Console.WriteLine("Добро пожаловать в NeedForSpeed RE!");
+        Thread.Sleep(1000);
+        Console.WriteLine("");
+        Console.WriteLine("В игре ты можешь гонять без всяких правил,\nно в жизни будь внимателен на дороге...");
+        Thread.Sleep(1000);
+        Console.WriteLine("");
+        Console.WriteLine("Нажмите любую клавишу для продолжения...");
+        Console.ReadKey();
         var raceType = GetRaceTypeFromConsole();
-        Console.WriteLine("Добро пожаловать в симулятор гонок!");
+        
         var distance = GetDistanceFromConsole();
 
         var vehicles = raceType switch

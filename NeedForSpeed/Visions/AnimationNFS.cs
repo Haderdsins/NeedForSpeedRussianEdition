@@ -1,4 +1,6 @@
-﻿
+﻿using System;
+using System.Threading;
+
 namespace NeedForSpeed.Visions
 {
     public class AnimationNFS
@@ -11,18 +13,18 @@ namespace NeedForSpeed.Visions
             int car1Position = 0; // Позиция первой машинки
             int car2Position = 0; // Позиция второй машинки
 
-            Random random = new Random();
+            // Времена за один шаг для каждой машины (в миллисекундах)
+            int car1StepTime = 200;
+            int car2StepTime = 1200;
 
             // Основной цикл гонки
             while (car1Position < trackLength && car2Position < trackLength)
             {
                 // Движение первой машинки
-                int move1 = random.Next(1, 4);
-                car1Position += move1;
+                car1Position += 1;
 
                 // Движение второй машинки
-                int move2 = random.Next(1, 4);
-                car2Position += move2;
+                car2Position += 1;
 
                 // Очищаем консоль перед каждым новым шагом
                 Console.Clear();
@@ -31,11 +33,11 @@ namespace NeedForSpeed.Visions
                 DrawTrack(trackLength, car1Position, car2Position);
 
                 // Задержка перед следующим шагом
-                Thread.Sleep(200);
+                Thread.Sleep(Math.Min(car1StepTime, car2StepTime));
             }
 
             // Определение победителя и вывод результата
-            string winner = car1Position >= trackLength ? "🚗" : "🚕";
+            string winner = car1Position >= trackLength ? "1" : "2";
             Console.WriteLine($"Победитель: {winner}");
         }
 

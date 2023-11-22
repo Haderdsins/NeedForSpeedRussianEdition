@@ -8,16 +8,16 @@ public static partial  class Menu
     {
         int raceType;
         bool isRaceTypeValid;
-
         do
         {
-            Console.WriteLine("Выберите желаемый тип гонки (введите цифру):\n1. Наземная;\n2. Воздушная;\n3. Для всех.");
+            Console.Clear();
+            Console.WriteLine("На чем сегодня погоняешь? (цифру):\n   1) Тачки отечественные\n           Самолеты забугорные (2\n3) Я псих, обгоню самолет на велосипеде");
             isRaceTypeValid = int.TryParse(Console.ReadLine(), out raceType);
-
+            //TODO сделать ошибку если выбираешь неправильно при этом выбрать все равно будет можно
             if (!Enum.IsDefined(typeof(RaceEnum), raceType) || !isRaceTypeValid)
             {
                 isRaceTypeValid = false;
-                Console.WriteLine("Тип гонки не найден!");
+                Console.WriteLine("Такую гонку еще не завезли, дружище, заходи позже!");
             }
         } while (!isRaceTypeValid);
 
@@ -31,6 +31,7 @@ public static partial  class Menu
 
         do
         {
+            Console.Clear();
             Console.WriteLine("Введите дистанцию гонки:");
             isParseDistanceValid = int.TryParse(Console.ReadLine(), out distance);
             if (!isParseDistanceValid)

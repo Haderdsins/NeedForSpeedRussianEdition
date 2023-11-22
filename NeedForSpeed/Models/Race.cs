@@ -1,4 +1,5 @@
 ﻿using NeedForSpeed.Models.Abstracts;
+using NeedForSpeed.Visions;
 
 namespace NeedForSpeed.Models;
 
@@ -15,7 +16,9 @@ public class Race
 
     public void Simulate()
     {
-        Console.WriteLine("------------------------");
+        Console.Clear();
+        Console.WriteLine("Гонка началась!");
+        //Console.WriteLine("------------------------");
         var raceResult = _vehicles.OrderBy(vehicle =>
         {
             var timeResult = vehicle.Go(_distance);
@@ -26,12 +29,17 @@ public class Race
 
         var winner = raceResult.First();
         Result(winner);
+        Thread.Sleep(1000);
+        Console.WriteLine("Нажмите любую клавишу для выхода в главное меню...");
+        Console.ReadKey();
+        Console.Clear();
+        Menu.Start(); ;
     }
 
     private static void Result(Vehicle winner)
     {
         Console.WriteLine("------------------------");
-        Console.WriteLine($"Победитель: {winner.Name}");
+        Console.WriteLine($"Чемпион гонки: {winner.Name}");
         Console.WriteLine("------------------------");
     }
 }
