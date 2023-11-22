@@ -1,68 +1,63 @@
 ﻿using System;
 using System.Threading;
+using NeedForSpeed.Models.Abstracts;
 
 namespace NeedForSpeed.Visions
 {
-    public class AnimationNFS
+    public static class RaceAnimation
     {
-        public static void Animation()
+        public static void AnimateRace(int trackLength, List<Vehicle> vehicles)
         {
-            Console.WriteLine("Гонка началась!");
+            int countOfCars = vehicles.Count;
+            int[] carPositions = new int[countOfCars];
+            int[] carSpeeds = new int[countOfCars];
+            int[] carTimes = new int[countOfCars];
+            Random random = new Random();
 
-            int trackLength = 30; // Длина трассы
-            int car1Position = 0; // Позиция первой машинки
-            int car2Position = 0; // Позиция второй машинки
-
-            // Времена за один шаг для каждой машины (в миллисекундах)
-            int car1StepTime = 200;
-            int car2StepTime = 1200;
-
-            // Основной цикл гонки
-            while (car1Position < trackLength && car2Position < trackLength)
+            // Инициализируем начальные позиции машин
+            for (int i = 0; i < countOfCars; i++)
             {
-                // Движение первой машинки
-                car1Position += 1;
-
-                // Движение второй машинки
-                car2Position += 1;
-
-                // Очищаем консоль перед каждым новым шагом
-                Console.Clear();
-
-                // Выводим трассу с машинками
-                DrawTrack(trackLength, car1Position, car2Position);
-
-                // Задержка перед следующим шагом
-                Thread.Sleep(Math.Min(car1StepTime, car2StepTime));
+                carPositions[i] = 0;
+                carSpeeds[i] = random.Next(1, 5); // Скорость от 1 до 4
             }
 
-            // Определение победителя и вывод результата
-            string winner = car1Position >= trackLength ? "1" : "2";
-            Console.WriteLine($"Победитель: {winner}");
+            // Визуализация гонки
+            while (true)
+            {
+                Console.Clear();
+                DrawTrack(trackLength, carPositions);
+                //LogoWithoutSleep.PrintLogo();
+
+                // Обновляем позиции машин
+                for (int i = 0; i < countOfCars; i++)
+                {
+                    carPositions[i] += carSpeeds[i];
+                    carTimes[i]++;
+
+                    // Проверяем, достигла ли машина финиша
+                    if (carPositions[i] >= trackLength)
+                    {
+                        return;
+                    }
+                }
+
+                Thread.Sleep(10); // Задержка для анимации
+            }
         }
 
-        static void DrawTrack(int trackLength, int car1Position, int car2Position)
+        private static void DrawTrack(int trackLength, int[] carPositions)
         {
-            // Выводим трассу с машинками
-            for (int i = 0; i < trackLength; i++)
+            for (int i = 0; i < carPositions.Length; i++)
             {
-                if (i == car1Position)
-                    Console.Write("1"); // Машинка 1
-                else
-                    Console.Write("-"); // Дорога
+                for (int j = 0; j < trackLength; j++)
+                {
+                    if (j == carPositions[i])
+                        Console.Write((i + 1).ToString()); // Номер машины
+                    else
+                        Console.Write("-"); // Дорога
+                }
+                Console.WriteLine(); // Переход на новую строку для следующей машины
             }
-
-            Console.WriteLine(); // Переход на новую строку для второй машинки
-
-            for (int i = 0; i < trackLength; i++)
-            {
-                if (i == car2Position)
-                    Console.Write("2"); // Машинка 2
-                else
-                    Console.Write("-"); // Дорога
-            }
-
-            Console.WriteLine(); // Переход на новую строку
         }
     }
 }

@@ -24,14 +24,20 @@ public class Race
         Thread.Sleep(1500);
         Console.Clear();
         TextPrinter.TypewriterLine("Старт гонки, победителю всё, проигравшему ничего...");
+        RaceAnimation.AnimateRace(_distance, _vehicles);
         //Console.WriteLine("————————————————————————");
         var raceResult = _vehicles.OrderBy(vehicle =>
         {
             var timeResult = vehicle.Go(_distance);
-            Console.WriteLine($"{vehicle.Name}: {timeResult} секунд");
+            
+            TextPrinter.Typewriter($"{vehicle.Name}: ");
+            Thread.Sleep(500);
+            Console.WriteLine($"{timeResult} секунд");
+            Thread.Sleep(500);
             return timeResult;
+            
         });
-        Console.WriteLine("————————————————————————");
+        Console.WriteLine("////////////////////////");
 
         var winner = raceResult.First();
         Result(winner);
@@ -46,7 +52,12 @@ public class Race
     private static void Result(Vehicle winner)
     {
         Console.WriteLine("————————————————————————");
-        Console.WriteLine($"Чемпион гонки: {winner.Name}");
+        Thread.Sleep(1000);
+        Console.Write($"Чемпион гонки: ");
+        Thread.Sleep(1500);
+        TextPrinter.TypewriterLine($"{winner.Name}");
         Console.WriteLine("————————————————————————");
+        Console.WriteLine("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
+
     }
 }
