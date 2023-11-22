@@ -10,7 +10,7 @@ internal class BabaYagasStupa: AirVehicle
         Speed = 2;
         KoefOfAcceleration = 2;
     }
-    // TODO разобраться с Go
+   
 
     public override int Go(int distance)
     {

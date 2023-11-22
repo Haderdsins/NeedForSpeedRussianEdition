@@ -11,7 +11,7 @@ public class PumpkinCarriage: EarthVehicle
         TimeOfMoveToChill = 7;// время движения до необходимого отдыха
         TimeOfChill = 6;// длительность отдыха, которая зависит от порядкового номера остановки
     }
-    
+    // TODO сделать просчеты для всех наземных разными
     public override int Go(int distance)
     {
         //Количество остановок

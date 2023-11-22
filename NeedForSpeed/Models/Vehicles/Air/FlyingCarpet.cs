@@ -11,7 +11,7 @@ public class FlyingCarpet: AirVehicle
         Speed = 4;
         KoefOfAcceleration = 6;
     }
-    // TODO разобраться с Go
+    // TODO сделать просчеты для всех воздушных транспортов разными
     public override int Go(int distance)
     {
         throw new NotImplementedException();

@@ -4,13 +4,25 @@ class Program
 {
     static void Main()
     {
+        Console.ForegroundColor = ConsoleColor.White;
         Console.WriteLine("  _   _     ______    _____ ");
-        Console.WriteLine(" | \\ | |  |  ____|  / ____| ");
-        Console.WriteLine(" |  \\| |  | |___   | (___ ");
-        Console.WriteLine(" | . ` |   |  ___|   \\___ \\");
-        Console.WriteLine(" | |\\  |  | |       ____) | ");
-        Console.WriteLine(" |_| \\_|  |_|      |_____/ ");
-        Console.WriteLine("      Russian Edition");
         
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine(" | \\ | |  |  ____|  / ____| ");
+        
+        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.WriteLine(" |  \\| |  | |___   | (___ ");
+        
+        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.WriteLine(" | . ` |   |  ___|   \\___ \\");
+        
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine(" | |\\  |  | |       ____) | ");
+        
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine(" |_| \\_|  |_|      |_____/ ");
+        
+        Console.ResetColor(); // Сброс цвета на стандартный
+        Console.WriteLine("      Russian Edition");
     }
 }

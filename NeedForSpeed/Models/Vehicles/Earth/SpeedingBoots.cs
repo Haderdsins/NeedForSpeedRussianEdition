@@ -11,7 +11,7 @@ public class SpeedingBoots: EarthVehicle
         TimeOfMoveToChill = 10; // время движения до необходимого отдыха
         TimeOfChill = 400;      // длительность отдыха, которая зависит от порядкового номера остановки
     }
-    
+    // TODO сделать просчеты для всех наземных разными
     public override int Go(int distance)
     {
         //Количество остановок

@@ -11,7 +11,7 @@ public class Broom: AirVehicle
         Speed = 5;
         KoefOfAcceleration = 10;
     }
-    // TODO разобраться с Go
+    // TODO сделать просчеты для всех воздушных транспортов разными
     public override int Go(int distance)
     {
         throw new NotImplementedException();

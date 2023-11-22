@@ -12,7 +12,7 @@ public class FlyingShip: AirVehicle
         Speed = 10;
         KoefOfAcceleration = 2;
     }
-    // TODO разобраться с Go
+    // TODO сделать просчеты для всех воздушных транспортов разными
     public override int Go(int distance)
     {
         throw new NotImplementedException();
