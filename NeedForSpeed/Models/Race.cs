@@ -39,7 +39,9 @@ public class Race
             return timeResult;
             
         });
+        Console.ForegroundColor = ConsoleColor.Black;
         Console.WriteLine("////////////////////////");
+        Console.ResetColor();
 
         var winner = raceResult.First();
         Result(winner);
@@ -62,7 +64,9 @@ public class Race
         TextPrinter.TypewriterLine($"{winner.Name}");
         Console.ResetColor();
         Console.WriteLine("————————————————————————");
+        Console.ForegroundColor = ConsoleColor.Black;
         Console.WriteLine("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
+        Console.ResetColor();
 
     }
 }

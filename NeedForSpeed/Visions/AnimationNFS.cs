@@ -41,7 +41,7 @@ namespace NeedForSpeed.Visions
                     }
                 }
 
-                Thread.Sleep(10); // Задержка для анимации
+                Thread.Sleep(60); // Задержка для анимации
             }
         }
 
