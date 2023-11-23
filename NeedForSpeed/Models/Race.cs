@@ -29,11 +29,13 @@ public class Race
         var raceResult = _vehicles.OrderBy(vehicle =>
         {
             var timeResult = vehicle.Go(_distance);
-            
+            Console.ForegroundColor = ConsoleColor.Cyan;
             TextPrinter.Typewriter($"{vehicle.Name}: ");
             Thread.Sleep(500);
+            Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine($"{timeResult} секунд");
             Thread.Sleep(500);
+            Console.ResetColor();
             return timeResult;
             
         });
@@ -53,9 +55,12 @@ public class Race
     {
         Console.WriteLine("————————————————————————");
         Thread.Sleep(1000);
+        Console.ForegroundColor = ConsoleColor.Yellow;
         Console.Write($"Чемпион гонки: ");
         Thread.Sleep(1500);
+        Console.ForegroundColor = ConsoleColor.Yellow;
         TextPrinter.TypewriterLine($"{winner.Name}");
+        Console.ResetColor();
         Console.WriteLine("————————————————————————");
         Console.WriteLine("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
 
