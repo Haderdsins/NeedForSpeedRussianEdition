@@ -5,7 +5,7 @@ namespace NeedForSpeed.Models.Vehicles.Air;
 
 public class FlyingShip: AirVehicle
 {
-    public FlyingShip(int distance)
+    public FlyingShip()
     {
         // TODO разобраться со свойствами
         Name = "Летучий корабль Капитана Джека Воробья(да в бутылке и что)";

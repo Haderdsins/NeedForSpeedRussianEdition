@@ -1,5 +1,6 @@
 ﻿using NeedForSpeed.Models;
 using NeedForSpeed.Models.Abstracts;
+using NeedForSpeed.Models.Vehicles.Air;
 using NeedForSpeed.Models.Vehicles.Earth;
 
 
@@ -138,14 +139,14 @@ public static partial class Menu
 
     
     
-    private static List<EarthVehicle> InitAirVehicles()
+    private static List<AirVehicle> InitAirVehicles()
     {
-        return new List<EarthVehicle>
+        return new List<AirVehicle>
         {
-            new Centaur(),
-            new HutOnChickenLegs(),
-            new PumpkinCarriage(),
-            new SpeedingBoots()
+            new BabaYagasStupa(),
+            new Broom(),
+            new FlyingCarpet(),
+            new FlyingShip()
         };
     }
     

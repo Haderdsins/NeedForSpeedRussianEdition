@@ -3,7 +3,7 @@ namespace NeedForSpeed.Models.Vehicles.Air;
 
 public class BabaYagasStupa: AirVehicle
 {
-    public BabaYagasStupa(int distance)
+    public BabaYagasStupa()
     {
         // TODO разобраться со свойствами
         Name = "Баба Ягиная Тапочка в пол";

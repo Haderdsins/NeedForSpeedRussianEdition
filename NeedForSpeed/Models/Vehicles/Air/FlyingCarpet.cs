@@ -4,7 +4,7 @@ namespace NeedForSpeed.Models.Vehicles.Air;
 
 public class FlyingCarpet: AirVehicle
 {
-    public FlyingCarpet(int distance)
+    public FlyingCarpet()
     {
         // TODO разобраться со свойствами
         Name = "Метелочка, жаль что не Ёлочка";

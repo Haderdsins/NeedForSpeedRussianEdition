@@ -4,7 +4,7 @@ namespace NeedForSpeed.Models.Vehicles.Air;
 
 public class Broom: AirVehicle
 {
-    public Broom(int distance)
+    public Broom()
     {
         // TODO разобраться со свойствами
         Name = "Метелочка, жаль что не Ёлочка";
