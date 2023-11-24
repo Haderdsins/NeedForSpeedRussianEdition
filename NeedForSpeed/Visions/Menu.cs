@@ -6,7 +6,7 @@ using NeedForSpeed.Models.Vehicles.Earth;
 
 namespace NeedForSpeed.Visions;
 
-public static partial class Menu
+public static class Menu
 {
     private static int GetRaceTypeFromConsole()
     {
@@ -73,6 +73,10 @@ public static partial class Menu
         var race = new Race(vehicles, distance);
         race.Simulate();
     }
+    /// <summary>
+    /// Список наземного транспорта
+    /// </summary>
+    /// <returns></returns>
     private static List<EarthVehicle> InitGroundVehicles()
     {
         return new List<EarthVehicle>
@@ -83,15 +87,22 @@ public static partial class Menu
             new SpeedingBoots()
         };
     }
-    private static IEnumerable<EarthVehicle> PrepareToStartGroundRace()
+    /// <summary>
+    /// Общий метод гонки
+    /// </summary>
+    /// <param name="vehicles"></param>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
+    private static IEnumerable<T> PrepareRace<T>(List<T> vehicles)
+        where T : Vehicle
     {
-        var vehicles = new List<EarthVehicle>();
-        var freeVehicles = InitGroundVehicles();
+        var selectedVehicles = new List<T>();
+        var freeVehicles = vehicles;
 
         while (true)
         {
             freeVehicles = freeVehicles
-                .Except(vehicles.Select(x => x))
+                .Except(selectedVehicles.Select(x => x))
                 .ToList();
 
             bool isInputValid;
@@ -104,12 +115,12 @@ public static partial class Menu
                 if (input?.ToLower() is "ready")
                 {
 
-                    if (vehicles.Count is not 0)
+                    if (selectedVehicles.Count is not 0)
                     {
-                        return vehicles;
+                        return selectedVehicles;
                     }
                     Console.Clear();
-                    Console.WriteLine("Ты че, серезно? Гонка без тачек это не гонка, это анекдот!");
+                    Console.WriteLine("Ты че, серьезно? Гонка без тачек это не гонка, это анекдот!");
                     TextPrinter.TypewriterLine("В Африке, если человек на 80% состоит из воды, то считается, что он из благополучной семьи.");
                     Thread.Sleep(2000);
                     isInputValid = false;
@@ -120,7 +131,7 @@ public static partial class Menu
 
                 if (isInputValid && vehicleIndex < freeVehicles.Count)
                 {
-                    vehicles.Add(freeVehicles[vehicleIndex]);
+                    selectedVehicles.Add(freeVehicles[vehicleIndex]);
                     freeVehicles.RemoveAt(vehicleIndex);
                 }
                 else
@@ -131,14 +142,23 @@ public static partial class Menu
 
                 if (freeVehicles.Count is 0)
                 {
-                    return vehicles;
+                    return selectedVehicles;
                 }
             } while (!isInputValid);
         }
     }
+    
+    private static IEnumerable<EarthVehicle> PrepareToStartGroundRace()
+    {
+        var vehicles = InitGroundVehicles();
+        return PrepareRace(vehicles);
+    }
 
     
-    
+    /// <summary>
+    /// Список воздушного траспорта
+    /// </summary>
+    /// <returns></returns>
     private static List<AirVehicle> InitAirVehicles()
     {
         return new List<AirVehicle>
@@ -149,26 +169,34 @@ public static partial class Menu
             new FlyingShip()
         };
     }
-    
+    /// <summary>
+    /// Метод для воздушной гонки
+    /// </summary>
+    /// <returns></returns>
     private static IEnumerable<AirVehicle> PrepareStartAirRace()
     {
-        throw new NotImplementedException();
+        var vehicles = InitAirVehicles();
+        return PrepareRace(vehicles);
     }
-
-    
-    
-    
-    
+  
+    /// <summary>
+    /// Метод для совместной гонки </summary>
+    /// <returns></returns>
     private static IEnumerable<Vehicle> PrepareStartCommonRace()
     {
-        throw new NotImplementedException();
+        var earthVehicles = InitGroundVehicles();
+        var airVehicles = InitAirVehicles();
+
+        var vehicles = earthVehicles.Cast<Vehicle>().Concat(airVehicles.Cast<Vehicle>()).ToList();
+
+
+        return PrepareRace(vehicles);
     }
-    
-    
-    
-    
-    
-    
+
+    /// <summary>
+    /// Выбор тачки
+    /// </summary>
+    /// <param name="vehicles"></param>
     private static void DisplayAvailableVehicles(IReadOnlyList<Vehicle> vehicles)
     {
         Console.Clear();
