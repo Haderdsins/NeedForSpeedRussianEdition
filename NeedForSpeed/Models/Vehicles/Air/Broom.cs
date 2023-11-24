@@ -14,7 +14,8 @@ public class Broom: AirVehicle
     // TODO сделать просчеты для всех воздушных транспортов разными
     public override int Go(int distance)
     {
-        throw new NotImplementedException();
+        var totalTimeOfRace = (int)Formula.CalculateTimeOfRace(Speed, KoefOfAcceleration, distance);
+        return totalTimeOfRace;
     }
 
 }

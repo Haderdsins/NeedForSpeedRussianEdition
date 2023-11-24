@@ -136,15 +136,38 @@ public static partial class Menu
         }
     }
 
+    
+    
+    private static List<EarthVehicle> InitAirVehicles()
+    {
+        return new List<EarthVehicle>
+        {
+            new Centaur(),
+            new HutOnChickenLegs(),
+            new PumpkinCarriage(),
+            new SpeedingBoots()
+        };
+    }
+    
     private static IEnumerable<AirVehicle> PrepareStartAirRace()
     {
         throw new NotImplementedException();
     }
 
+    
+    
+    
+    
     private static IEnumerable<Vehicle> PrepareStartCommonRace()
     {
         throw new NotImplementedException();
     }
+    
+    
+    
+    
+    
+    
     private static void DisplayAvailableVehicles(IReadOnlyList<Vehicle> vehicles)
     {
         Console.Clear();

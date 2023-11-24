@@ -11,7 +11,6 @@ public class Centaur: EarthVehicle
         TimeOfMoveToChill = 2;// время движения до необходимого отдыха
         TimeOfChill = 4;// длительность отдыха, которая зависит от порядкового номера остановки
     }
-    // TODO сделать просчеты для всех наземных разными
     public override int Go(int distance)
     {
         //Количество остановок
@@ -20,6 +19,7 @@ public class Centaur: EarthVehicle
         //Всего отдыха
         for (int i = 1; i < CountOfStop; i++)
         {
+            //отдых, зависимый от номера остановки
             TotalChill += TimeOfChill * i;
         }
 

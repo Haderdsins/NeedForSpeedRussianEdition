@@ -1,7 +1,7 @@
 ﻿using NeedForSpeed.Models.Abstracts;
 namespace NeedForSpeed.Models.Vehicles.Air;
 
-internal class BabaYagasStupa: AirVehicle
+public class BabaYagasStupa: AirVehicle
 {
     public BabaYagasStupa(int distance)
     {
@@ -11,10 +11,13 @@ internal class BabaYagasStupa: AirVehicle
         KoefOfAcceleration = 2;
     }
    
-
     public override int Go(int distance)
     {
-        throw new NotImplementedException();
+        var totalTimeOfRace = (int)Formula.CalculateTimeOfRace(Speed, KoefOfAcceleration, distance);
+        return totalTimeOfRace;
     }
-
+      
 }
+
+
+
