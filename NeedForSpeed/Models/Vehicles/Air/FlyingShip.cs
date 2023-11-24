@@ -15,7 +15,7 @@ public class FlyingShip: AirVehicle
     // TODO сделать просчеты для всех воздушных транспортов разными
     public override int Go(int distance)
     {
-        var totalTimeOfRace = (int)Formula.CalculateTimeOfRace(Speed, KoefOfAcceleration, distance);
+        var totalTimeOfRace = (int)Formula.CalculateTimeOfRaceSquareRoot(Speed, KoefOfAcceleration, distance);
         return totalTimeOfRace;
     }
 

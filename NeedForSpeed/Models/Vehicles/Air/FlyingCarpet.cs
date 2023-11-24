@@ -7,14 +7,14 @@ public class FlyingCarpet: AirVehicle
     public FlyingCarpet()
     {
         // TODO разобраться со свойствами
-        Name = "Метелочка, жаль что не Ёлочка";
+        Name = "Летающий ковер из прихожей";
         Speed = 4;
         KoefOfAcceleration = 6;
     }
     // TODO сделать просчеты для всех воздушных транспортов разными
     public override int Go(int distance)
     {
-        var totalTimeOfRace = (int)Formula.CalculateTimeOfRace(Speed, KoefOfAcceleration, distance);
+        var totalTimeOfRace = (int)Formula.CalculateTimeOfRaceLogarithmic(Speed, KoefOfAcceleration, distance);
         return totalTimeOfRace;
     }
 
