@@ -14,7 +14,7 @@ public class FlyingCarpet: AirVehicle
     // TODO сделать просчеты для всех воздушных транспортов разными
     public override int Go(int distance)
     {
-        var totalTimeOfRace = (int)Formula.CalculateTimeOfRaceLogarithmic(Speed, KoefOfAcceleration, distance);
+        var totalTimeOfRace = (int)Formula.CalculateTimeOfRaceSqrt(Speed, KoefOfAcceleration, distance);
         return totalTimeOfRace;
     }
 

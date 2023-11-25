@@ -20,10 +20,10 @@ public static class Formula
     }
 
 
-    public static int CalculateTimeOfRaceLogarithmic(double speed, double koefOfAcceleration, double distance)
+    public static int CalculateTimeOfRaceSqrt(double speed, double koefOfAcceleration, double distance)
     {
-        // Используем логарифмическую функцию движения
-        double time = Math.Log(distance / speed + 1) / koefOfAcceleration;
+        // Используем квадратичную функцию
+        double time = Math.Sqrt(distance / speed + 1) / koefOfAcceleration;
 
         // Убеждаемся, что время положительное
         return (int)Math.Max(0, time);
